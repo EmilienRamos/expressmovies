@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser'); // Allow us to manipualte datas from Front forms
 
 const PORT = 3000;
 
 app.use('/public', express.static('public'));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -20,6 +22,13 @@ app.get('/movies', (req, res) => {
   res.render('movies', {
     movies: frenchMovies
   });
+});
+
+let urlEncodeParser = bodyParser.urlencoded({ extended: false });
+
+app.post('/movies',urlEncodeParser, (req, res) => {
+  console.log(req.body);
+  res.sendStatus(201);
 });
 
 app.get('/movies/add', (req, res) => {

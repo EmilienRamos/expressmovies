@@ -11,6 +11,13 @@
     <% for(movie of movies) {%>
       <div><%= movie.title %></div>
     <%} %>
+    <br>
+    <div>
+      <form action="/movies" method="post">
+        <input type="text" name="title" placeholder="Movie title">
+        <button type="submit">Add</button>
+      </form>
+    </div>
   </body>
   <%- include('partials/footer.ejs') %>
 </html>
