@@ -7,6 +7,10 @@
   </head>
   <%- include('partials/header.ejs') %>
   <body>
-    <h1>Express movies</h1>
+    <h1>Movies list</h1>
+    <% for(movie of movies) {%>
+      <div><%= movie.title %></div>
+    <%} %>
   </body>
+  <%- include('partials/footer.ejs') %>
 </html>

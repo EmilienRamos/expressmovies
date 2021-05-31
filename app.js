@@ -9,7 +9,17 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 app.get('/movies', (req, res) => {
-  res.send('Movies');
+  const frenchMovies = [
+    { title: 'Title 1' },
+    { title: 'Title 2' },
+    { title: 'Title 3' },
+    { title: 'Title 4' },
+    { title: 'Title 5' },
+    { title: 'Title 6' },
+  ];
+  res.render('movies', {
+    movies: frenchMovies
+  });
 });
 
 app.get('/movies/add', (req, res) => {
@@ -17,7 +27,9 @@ app.get('/movies/add', (req, res) => {
 });
 
 app.get('/movies/:id', (req, res) => {
-  res.send('Movies ' + req.params.id);
+  res.render('movie-details', {
+    id: req.params.id
+  });
 });
 
 app.get('/', (req, res) => {
